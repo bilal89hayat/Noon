@@ -30,7 +30,7 @@ public class BooksController {
       return booksService.deleteByBookName(bookName);
    }
 
-    @DeleteMapping(value = "/deleteByName/{publisherName}")
+    @DeleteMapping(value = "/deleteByPublisherName/{publisherName}")
     public ResponseEntity<Response> deleteBooksByPublisherName(@PathVariable String publisherName){
            return booksService.deleteByPublisherName(publisherName);
     }
