@@ -12,12 +12,11 @@ public class Fine {
     private Long id;
     private int amount;
     private String bookId;
+    @Temporal(TemporalType.DATE)
     private Date createdDate;
+    @Temporal(TemporalType.DATE)
     private Date updatedDate;
-
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private UserDetails userDetails;
+    private Long userId;
 
 
     public Long getId() {
@@ -52,20 +51,20 @@ public class Fine {
         this.updatedDate = updatedDate;
     }
 
-    public UserDetails getUserDetails() {
-        return userDetails;
-    }
-
-    public void setUserDetails(UserDetails userDetails) {
-        this.userDetails = userDetails;
-    }
-
     public String getBookId() {
         return bookId;
     }
 
     public void setBookId(String bookId) {
         this.bookId = bookId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -75,14 +74,14 @@ public class Fine {
         Fine fine = (Fine) o;
         return amount == fine.amount &&
                 Objects.equals(id, fine.id) &&
+                Objects.equals(bookId, fine.bookId) &&
                 Objects.equals(createdDate, fine.createdDate) &&
                 Objects.equals(updatedDate, fine.updatedDate) &&
-                Objects.equals(userDetails, fine.userDetails) &&
-                Objects.equals(bookId, fine.bookId);
+                Objects.equals(userId, fine.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, amount, createdDate, updatedDate, userDetails, bookId);
+        return Objects.hash(id, amount, bookId, createdDate, updatedDate, userId);
     }
 }

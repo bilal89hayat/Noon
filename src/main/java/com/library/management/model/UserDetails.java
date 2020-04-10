@@ -14,6 +14,7 @@ public class UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long userId;
     private String userName;
+    @Temporal(TemporalType.DATE)
     private Date createdDate;
     private Boolean isMemberShipActive;
 
